@@ -52,11 +52,14 @@ C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\roslyn\VBCSCompiler.
 C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\Newtonsoft.Json.dll
 C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\System.Net.Http.Formatting.dll
+C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\System.Web.Cors.dll
+C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\System.Web.Http.Cors.dll
 C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\System.Web.Http.dll
 C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\System.Web.Http.WebHost.dll
-C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\Newtonsoft.Json.xml
 C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\System.Net.Http.Formatting.xml
 C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\System.Web.Http.xml
+C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\System.Web.Http.Cors.xml
+C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\Newtonsoft.Json.xml
 C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\System.Web.Http.WebHost.xml
 C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\ssrivastava\source\repos\BookingAPI\BookingAPI\obj\Debug\BookingAPI.csprojAssemblyReference.cache

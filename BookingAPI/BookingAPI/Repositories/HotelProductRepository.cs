@@ -20,12 +20,11 @@ namespace BookingAPI.RepositoryLayer
         public bool AddProduct(Hotel hotelProduct)
         {
             connection();
-            string query = "INSERT INTO Hotel(Id, Name, Price, LandMark, City, FromDate, ToDate, IsBooked, IsSaved) VALUES(@id, @name, @price, @landMark, @city, @fromDate, @toDate, @isBooked, @isSaved)";
+            string query = "INSERT INTO Hotel(Name, Price, LandMark, City, FromDate, ToDate, IsBooked, IsSaved) VALUES(@name, @price, @landMark, @city, @fromDate, @toDate, @isBooked, @isSaved)";
             SqlCommand command = new SqlCommand(query, con)
             {
                 CommandType = CommandType.Text
             };
-            command.Parameters.AddWithValue("@id", hotelProduct.Id);
             command.Parameters.AddWithValue("@name", hotelProduct.Name);
             command.Parameters.AddWithValue("@price", hotelProduct.Price);
             command.Parameters.AddWithValue("@landMark", hotelProduct.LandMark);
@@ -74,6 +73,7 @@ namespace BookingAPI.RepositoryLayer
                         FromDate = Convert.ToString(dr["FromDate"]),
                         ToDate = Convert.ToString(dr["ToDate"]),
                         IsBooked = Convert.ToBoolean(dr["IsBooked"]),
+                        Price = (float)Convert.ToDouble(dr["Price"]),
                         IsSaved = Convert.ToBoolean(dr["IsSaved"])
                     }
                 );

@@ -1,5 +1,6 @@
 ﻿using BookingAPI.Entities;
 using BookingAPI.RepositoryLayer;
+using BookingAPI.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,13 @@ namespace BookingAPI.Controllers
         public List<Hotel> Get()
         {
             HotelProductRepository repository = new HotelProductRepository();
-            return repository.GetAllProducts();
+            IProductTotalFareStrategy productFare = new HotelProductFare();
+            List<Hotel> hotelProducts = repository.GetAllProducts();
+            foreach (Hotel hotelProduct in hotelProducts)
+            {
+                hotelProduct.Price = productFare.GetTotalFare(hotelProduct.Price);
+            }
+            return hotelProducts;
         }
 
         [Route("Products/Hotel/Book/{id}")]

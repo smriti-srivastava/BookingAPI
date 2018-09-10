@@ -1,11 +1,13 @@
 ﻿using BookingAPI.Entities;
 using BookingAPI.RepositoryLayer;
+using BookingAPI.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace BookingAPI.Controllers
 {
@@ -24,7 +26,13 @@ namespace BookingAPI.Controllers
         public List<Car> Get()
         {
             CarProductRepository repository = new CarProductRepository();
-            return repository.GetAllProducts();
+            IProductTotalFareStrategy productFare = new CarProductFare();
+            List<Car> carProduct = repository.GetAllProducts();
+            foreach (Car airProduct in carProduct)
+            {
+                airProduct.Price = productFare.GetTotalFare(airProduct.Price);
+            }
+            return carProduct;
         }
 
         [Route("Products/Car/Book/{id}")]

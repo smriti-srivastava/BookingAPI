@@ -20,13 +20,12 @@ namespace BookingAPI.RepositoryLayer
         public bool AddProduct(Air airProduct)
         {
             connection();
-            string query = "INSERT INTO Air(Id, Name, Price, DepartureTime, ArrivalTime, Duration, IsBooked, IsSaved) VALUES(@id, @name, @price, @departureTime, @arrivalTime, @duration, @isBooked, @isSaved)";
+            string query = "INSERT INTO Air(Name, Price, DepartureTime, ArrivalTime, Duration, IsBooked, IsSaved) VALUES(@name, @price, @departureTime, @arrivalTime, @duration, @isBooked, @isSaved)";
             SqlCommand command = new SqlCommand(query, con)
             {
                 CommandType = CommandType.Text
             };
             airProduct.Duration = Convert.ToString(Convert.ToDateTime(airProduct.ArrivalTime) - Convert.ToDateTime(airProduct.DepartureTime));
-            command.Parameters.AddWithValue("@id", airProduct.Id);
             command.Parameters.AddWithValue("@name", airProduct.Name);
             command.Parameters.AddWithValue("@price", airProduct.Price);
             command.Parameters.AddWithValue("@departureTime", airProduct.DepartureTime);
@@ -74,6 +73,7 @@ namespace BookingAPI.RepositoryLayer
                         DepartureTime = Convert.ToString(dr["DepartureTime"]),
                         ArrivalTime = Convert.ToString(dr["ArrivalTime"]),
                         Duration = Convert.ToString(dr["Duration"]),
+                        Price = (float)Convert.ToDouble(dr["Price"]),
                         IsBooked = Convert.ToBoolean(dr["IsBooked"]),
                         IsSaved = Convert.ToBoolean(dr["IsSaved"])
                     }

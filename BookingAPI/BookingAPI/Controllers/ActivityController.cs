@@ -1,5 +1,6 @@
 ﻿using BookingAPI.Entities;
 using BookingAPI.RepositoryLayer;
+using BookingAPI.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,10 @@ namespace BookingAPI.Controllers
     {
         [Route("Products/Activity")]
         [HttpPost]
-        public void AddAirProduct(Activity airProduct)
+        public void AddProduct(Activity activityProduct)
         {
             ActivityProductRepository repository = new ActivityProductRepository();
-            repository.AddProduct(airProduct);
+            repository.AddProduct(activityProduct);
         }
 
         [Route("Products/Activity")]
@@ -24,7 +25,13 @@ namespace BookingAPI.Controllers
         public List<Activity> Get()
         {
             ActivityProductRepository repository = new ActivityProductRepository();
-            return repository.GetAllProducts();
+            IProductTotalFareStrategy productFare = new ActivityProductFare();
+            List<Activity> activities = repository.GetAllProducts();
+            foreach(Activity activity in activities)
+            {
+                activity.Price = productFare.GetTotalFare(activity.Price);
+            }
+            return activities;
         }
 
         [Route("Products/Activity/Book/{id}")]
